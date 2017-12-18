@@ -1,3 +1,7 @@
+//Created by Anubhav Kesari
+//I solved the range minimum query and range updation using Segement Tree using Lazy Propogation
+
+
 #include<iostream>
 #include<cstdio>
 #include<cstring>
@@ -20,6 +24,8 @@ int fill_tree(int seg[] , int index , int cl , int cr , int arr[])
 	return seg[index];
 }
 
+
+// Without taking the Lazy propogation into account
 int getMin(int seg[],int i , int cl ,int cr , int l , int r)
 {
 	if(cl>=l && cr<=r )  return seg[i];
@@ -28,6 +34,7 @@ int getMin(int seg[],int i , int cl ,int cr , int l , int r)
 	return min(getMin(seg,2*i+1,cl,mid,l,r), getMin(seg,2*i+2,mid+1,cr,l,r));	
 } 
 
+//With taking lazy propogation into account
 int rangeMinLazy(int seg[] ,int lazy[] , int i , int cl , int cr , int l , int r)
 {
 	if(lazy[i]) seg[i]+=lazy[i];
